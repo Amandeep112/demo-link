@@ -18,9 +18,10 @@ function App() {
         navigator.userAgent
       );
 
-    var deepLinkURL = `thebeerstore://`;
+    // var deepLinkURL = `thebeerstore://`;
     if (isMobile) {
-      window.location.href = deepLinkURL;
+       document.getElementById("l").src = `thebeerstore://`;
+      // window.location.href = deepLinkURL;
       setTimeout(function () {
         // If the app does not open, fall back to the browser
         window.open(webURL, "_blank");
@@ -33,7 +34,14 @@ function App() {
     }
   }, []);
 
-  return <div className="App"></div>;
+  return <div className="App">
+      <iframe
+        id="l"
+        width="1"
+        height="1"
+        style={{ visibility: "hidden" }}
+      ></iframe>
+    </div>;
 }
 
 export default App;
