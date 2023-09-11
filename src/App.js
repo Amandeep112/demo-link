@@ -4,11 +4,10 @@ import { useEffect } from "react";
 
 function App() {
   // eslint-disable-next-line no-undef
-  useEffect(() => {
-     window.onload = function () {
+   useEffect(() => {
     var webURL;
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      webURL = "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+      webURL = `itms-apps://apps.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone`;
     } else {
       webURL = `market://details?id=com.beerstore`;
     }
@@ -21,8 +20,8 @@ function App() {
 
     // var deepLinkURL = `thebeerstore://`;
     if (isMobile) {
-       document.getElementById("l").src = `thebeerstore://`;
       // window.location.href = deepLinkURL;
+      document.getElementById("l").src = `thebeerstore://`;
       setTimeout(function () {
         // If the app does not open, fall back to the browser
         window.open(webURL, "_blank");
@@ -33,7 +32,6 @@ function App() {
       window.open("https://www.thebeerstore.ca/", "_blank");
       window.location.href = "https://www.thebeerstore.ca/";
     }
-     }
   }, []);
 
   return <div className="App">
