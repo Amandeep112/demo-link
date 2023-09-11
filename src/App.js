@@ -7,7 +7,7 @@ function App() {
    useEffect(() => {
     var webURL;
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      webURL = `itms-apps://apps.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone`;
+      webURL ="https://itunes.apple.com/us/app/the-beer-store/id1623374239?platform=iphone";
     } else {
       webURL = `market://details?id=com.beerstore`;
     }
