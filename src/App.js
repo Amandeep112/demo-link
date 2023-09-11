@@ -5,6 +5,7 @@ import { useEffect } from "react";
 function App() {
   // eslint-disable-next-line no-undef
   useEffect(() => {
+     window.onload = function () {
     var webURL;
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       webURL = "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
@@ -32,6 +33,7 @@ function App() {
       window.open("https://www.thebeerstore.ca/", "_blank");
       window.location.href = "https://www.thebeerstore.ca/";
     }
+     }
   }, []);
 
   return <div className="App">
