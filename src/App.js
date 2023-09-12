@@ -13,16 +13,23 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
-    if (isiOS || isAndroid) {
-      document.getElementById("loader").src =
-        "thebeerstore://" + window.location.search + window.location.hash;
-      fallbackLink = isAndroid
-        ? "market://details?id=com.beerstore"
-        : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+    try {
+      if (isiOS || isAndroid) {
+        window.location.href = "thebeerstore://";
+        document.getElementById("loader").src =
+          "thebeerstore://" + window.location.search + window.location.hash;
+      } else {
+        fallbackLink = isAndroid
+          ? "market://details?id=com.beerstore"
+          : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+      }
+      window.setTimeout(function () {
+        window.location.replace(fallbackLink);
+      }, 1);
+    } catch {
+      window.open("https://www.thebeerstore.ca/", "_blank");
+      window.location.href = "https://www.thebeerstore.ca/";
     }
-    window.setTimeout(function () {
-      window.location.replace(fallbackLink);
-    }, 1);
   }, []);
 
   return (
