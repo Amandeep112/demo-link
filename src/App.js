@@ -17,7 +17,7 @@ function App() {
       if (isiOS || isAndroid) {
         window.location.href = "thebeerstore://";
         document.getElementById("loader").src =
-          "thebeerstore://" + window.location.search + window.location.hash;
+          "thebeerstore://";
       } else {
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore"
