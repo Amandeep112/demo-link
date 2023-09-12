@@ -1,48 +1,54 @@
-import "./App.css";
-import { useEffect } from "react";
-import branch from "branch-sdk";
+import React, { useEffect } from 'react';
+import branch from 'branch-sdk';
 
 function App() {
   useEffect(() => {
-    // Initialize the Branch SDK
-    branch.init("YOUR_BRANCH_KEY", function (err, data) {
-      if (err) {
-        console.error(err);
-        redirectToWebsite();
-        return;
-      }
-
-      // Generate a deep link URL for your app
-      var deepLinkURL = "thebeerstore://";
-
-      // Create a Branch deep link
-      var branchLinkData = {
-        channel: "website",
-        data: {
-          $og_title: "The Beer Store",
-          $deeplink_path: deepLinkURL,
-        },
-      };
-
-      branch.link(branchLinkData, function (err, link) {
+    async function checkAndOpenApp() {
+      // Initialize the Branch SDK with your Branch.io key
+      branch.init('YOUR_BRANCH_KEY', async (err, data) => {
         if (err) {
           console.error(err);
           redirectToWebsite();
           return;
         }
 
-        // Redirect the user to the generated deep link URL
-        window.location.href = link;
-      });
-    });
+        // Generate a deep link URL for your app
+        const deepLinkURL = 'thebeerstore://';
 
-    // Function to redirect to the website
-    function redirectToWebsite() {
-      window.location.href = "https://www.thebeerstore.ca/";
+        try {
+          // Check if the app is installed
+          const isAppInstalled = await branch.isAppInstalled();
+          
+          if (isAppInstalled) {
+            // App is installed, open the app
+            window.location.href = deepLinkURL;
+          } else {
+            // App is not installed, redirect to the website
+            redirectToWebsite();
+          }
+        } catch (error) {
+          console.error(error);
+          // An error occurred while checking app installation status, redirect to the website
+          // redirectToWebsite();
+          window.location.href = 'https://www.thebeerstore.ca/';
+        }
+      });
+
+      // Function to redirect to the website
+      function redirectToWebsite() {
+        window.location.href = 'https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone';
+      }
     }
+
+    // Call the checkAndOpenApp function when the component mounts
+    checkAndOpenApp();
   }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div>
+      {/* Your React component content */}
+    </div>
+  );
 }
 
 export default App;
