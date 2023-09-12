@@ -15,8 +15,11 @@ function App() {
         }
 
         // Generate a deep link URL for your app
-        const deepLinkURL = "thebeerstore://";
+      });
 
+      // Function to redirect to the website
+      function redirectToWebsite() {
+        const deepLinkURL = "thebeerstore://";
         try {
           // Check if the app is installed
           const isAppInstalled = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -42,12 +45,6 @@ function App() {
           // An error occurred while checking app installation status, redirect to the website
           window.location.href = "https://www.thebeerstore.ca/";
         }
-      });
-
-      // Function to redirect to the website
-      function redirectToWebsite() {
-        window.location.href =
-          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
       }
     }
 
