@@ -17,7 +17,7 @@ function App() {
     var safariExpression = /Safari/i.test(navigator.userAgent);
     try {
       if (safariExpression) {
-        window.location.href = "https://tbsecomd.wpengine.com/openApp";
+        window.open = "https://tbsecomd.wpengine.com/openApp";
       }
       if (isiOS || isAndroid) {
         window.location.href = "thebeerstore://";
