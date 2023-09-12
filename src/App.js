@@ -6,40 +6,44 @@ function App() {
   useEffect(() => {
     var webURL;
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      webURL = 
-        "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone"
-      
+      webURL =
+        "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
     } else {
-      webURL = "market://details?id=com.beerstore";
+      webURL = `market://details?id=com.beerstore`;
     }
-    // window.open(webURL, "_blank");
-    // window.location.href = webURL;
-    // var isMobile =
-    //   /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    //     navigator.userAgent
-    //   );
+    window.open(webURL, "_blank");
+    window.location.href = webURL;
+    var isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
 
-    // var deepLinkURL = `thebeerstore://`;
-    try {
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.location.href = "thebeerstore://";
-        setTimeout(function () {
-          // If the app does not open, fall back to the browser
-          window.open(webURL, "_blank");
-          window.location.href = webURL;
-        }, 1000);
-      } else {
-        redirectToWebsite();
-      }
-    } catch {
+    var deepLinkURL = `thebeerstore://`;
+    if (isMobile) {
+      document.getElementById("loader").src =
+        deepLinkURL + window.location.search + window.location.hash;
+      // window.location.href = deepLinkURL;
+      setTimeout(function () {
+        // If the app does not open, fall back to the browser
+        window.open(
+          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone",
+          "_blank"
+        );
+        window.location.href =
+          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+      }, 1000);
+    } else {
+      // Open in the browser on non-mobile devices
+      window.open("https://www.thebeerstore.ca/", "_blank").focus();
       window.location.href = "https://www.thebeerstore.ca/";
-    }
-    function redirectToWebsite() {
-      window.location.href = webURL;
     }
   }, []);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <iframe style="display:none" height="0" width="0" id="loader"></iframe>
+    </div>
+  );
 }
 
 export default App;
