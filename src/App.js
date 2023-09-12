@@ -24,8 +24,8 @@ function App() {
       document.getElementById("l").src = `thebeerstore://`;
       setTimeout(function () {
         // If the app does not open, fall back to the browser
-        window.open(webURL, "_blank");
-        window.location.href = webURL;
+        window.open("https://itunes.apple.com/us/app/the-beer-store/id1623374239?platform=iphone", "_blank");
+        window.location.href ="https://itunes.apple.com/us/app/the-beer-store/id1623374239?platform=iphone";
       }, 1000);
     } else {
       // Open in the browser on non-mobile devices
