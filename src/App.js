@@ -35,7 +35,7 @@ function App() {
       }, 1000);
     } else {
       // Open in the browser on non-mobile devices
-      window.open("https://www.thebeerstore.ca/", "_blank").focus();
+      window.open("https://www.thebeerstore.ca/", "_blank");
       window.location.href = "https://www.thebeerstore.ca/";
     }
   }, []);
