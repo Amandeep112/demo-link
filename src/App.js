@@ -19,7 +19,7 @@ function App() {
         navigator.userAgent
       );
 
-    var deepLinkURL = `thebeerstore://`;
+    var deepLinkURL =encodeURIComponent(`thebeerstore://`);
     if (isMobile) {
       window.location.href = deepLinkURL;
       setTimeout(function () {
