@@ -47,6 +47,7 @@ function App() {
     function redirectToWebsite() {
       window.location.href = "https://www.thebeerstore.ca/";
     }
+      window.alert('hi')
   }, []);
 
   return <div className="App">
