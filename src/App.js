@@ -25,15 +25,15 @@ function App() {
           : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
             window.location.search +
             window.location.hash;
+        window.setTimeout(function () {
+          window.location.replace(fallbackLink);
+        }, 1);
       } else {
         window.location.href =
           "https://www.thebeerstore.ca/" +
           window.location.search +
           window.location.hash;
       }
-      window.setTimeout(function () {
-        window.location.replace(fallbackLink);
-      }, 1);
     } catch {
       window.open(
         "https://www.thebeerstore.ca/" +
