@@ -28,6 +28,15 @@ function App() {
         window.setTimeout(function () {
           window.location.replace(fallbackLink);
         }, 1);
+        setTimeout(function () {
+          // If the app does not open, fall back to the browser
+          window.open(
+            "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone",
+            "_blank"
+          );
+          window.location.href =
+            "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+        }, 1000);
       } else {
         window.location.href =
           "https://www.thebeerstore.ca/" +
