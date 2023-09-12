@@ -15,7 +15,7 @@ function App() {
       isAndroid = navigator.userAgent.match("Android");
     try {
       if (isiOS || isAndroid) {
-        window.location.href = "thebeerstore://";
+        window.location.href = "thebeerstore://" + window.location.search + window.location.hash;;
         document.getElementById("loader").src =
           "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
@@ -25,9 +25,9 @@ function App() {
           : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
             window.location.search +
             window.location.hash;
-        setTimeout(function () {
+        window.setTimeout(function () {
           window.location.replace(fallbackLink);
-        }, 1000);
+        }, 1);
       } else {
         window.location.href =
           "https://www.thebeerstore.ca/" +
