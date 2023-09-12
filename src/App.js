@@ -19,7 +19,7 @@ function App() {
       if (safariExpression) {
         window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
       }
-      if (isiOS || isAndroid) {
+      if (isAndroid) {
         window.location.href = "thebeerstore://";
         document.getElementById("loader").src =
           "thebeerstore://" + window.location.search + window.location.hash;
