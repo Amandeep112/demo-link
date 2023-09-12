@@ -15,7 +15,7 @@ function App() {
       isAndroid = navigator.userAgent.match("Android");
     try {
       if (isiOS || isAndroid) {
-        window.location.href = "thebeerstore://" + window.location.search + window.location.hash;;
+        window.location.href = "thebeerstore://";
         document.getElementById("loader").src =
           "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
