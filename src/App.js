@@ -39,14 +39,16 @@ function App() {
           window.location.href = "https://www.thebeerstore.ca/";
         }
       }
-      try {
-        document.addEventListener("DOMContentLoaded", function () {
-          openFacebookApp();
-        });
-      } catch (error) {
-        console.info(error, "error");
-        window.location.href = "https://www.thebeerstore.ca/";
-      }
+    useEffect(() => {
+    try {
+      document.addEventListener("DOMContentLoaded", function () {
+        openFacebookApp();
+      });
+    } catch (error) {
+      console.info(error, "error");
+      window.location.href = "https://www.thebeerstore.ca/";
+    }
+  });
 
   return <div className="App">
       <iframe
