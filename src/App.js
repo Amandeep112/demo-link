@@ -17,11 +17,12 @@ function App() {
       if (isiOS || isAndroid) {
         window.location.href = "thebeerstore://";
         document.getElementById("loader").src =
-          "thebeerstore://";
-      } else {
+          "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore"
           : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+      } else {
+        window.location.href = "https://www.thebeerstore.ca/";
       }
       window.setTimeout(function () {
         window.location.replace(fallbackLink);
