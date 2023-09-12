@@ -21,7 +21,7 @@ function App() {
         //   ) && !window.MSStream;
 
         // var deepLinkURL = `thebeerstore://`;
-        if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && !window.MSStream) {
+        if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
           window.location.href = `thebeerstore://`;
 
           setTimeout(function () {
