@@ -1,16 +1,9 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { useEffect } from "react";
 import branch from "branch-sdk";
 
 function App() {
   useEffect(() => {
-    const script = document.createElement("script");
-
-    script.src = "https://cdn.branch.io/branch-latest.min.js";
-    script.async = true;
-
-    document.body.appendChild(script);
     // Initialize the Branch SDK
     branch.init("YOUR_BRANCH_KEY", function (err, data) {
       if (err) {
@@ -31,7 +24,7 @@ function App() {
         },
       };
 
-      script.link(branchLinkData, function (err, link) {
+      branch.link(branchLinkData, function (err, link) {
         if (err) {
           console.error(err);
           redirectToWebsite();
@@ -47,7 +40,6 @@ function App() {
     function redirectToWebsite() {
       window.location.href = "https://www.thebeerstore.ca/";
     }
-    window.alert("hii");
   }, []);
 
   return <div className="App"></div>;
