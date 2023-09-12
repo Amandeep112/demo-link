@@ -4,17 +4,14 @@ import { useEffect } from "react";
 
 function App() {
   // eslint-disable-next-line no-undef
-  useEffect(() => {
-
+   useEffect(() => {
+    window.alert("hello");
     var fallbackLink =
       "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
       window.location.search +
       window.location.hash;
-    var isiOS =
-        navigator.userAgent.match("iPad") ||
-        navigator.userAgent.match("iPhone") ||
-        navigator.userAgent.match("iPod"),
-      isAndroid = navigator.userAgent.match("Android");
+    var isiOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var isAndroid = /Android/i.test(navigator.userAgent);
     if (isiOS || isAndroid) {
       document.getElementById("loader").src =
         "thebeerstore://" + window.location.search + window.location.hash;
