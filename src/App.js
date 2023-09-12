@@ -5,37 +5,46 @@ import { useEffect } from "react";
 function App() {
   // eslint-disable-next-line no-undef
     useEffect(() => {
-    var webURL;
-    if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      webURL =
-        "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
-    } else {
-      webURL = `market://details?id=com.beerstore`;
-    }
-    window.open(webURL, "_blank");
-    window.location.href = webURL;
-    var isMobile =
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      );
+    const script = document.createElement("script");
 
-    var deepLinkURL = `thebeerstore://`;
-    if (isMobile) {
-      window.location.href = deepLinkURL;
-      setTimeout(function () {
-        // If the app does not open, fall back to the browser
-        window
-          .open(
-            "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone",
-            "_blank"
-          )
-          .focus();
-        window.location.href =
-          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
-      }, 1000);
-    } else {
-      // Open in the browser on non-mobile devices
-      window.open("https://www.thebeerstore.ca/", "_blank");
+    script.src = "https://cdn.branch.io/branch-latest.min.js";
+    script.async = true;
+
+    document.body.appendChild(script);
+    // Initialize the Branch SDK
+    script.init("YOUR_BRANCH_KEY", function (err, data) {
+      if (err) {
+        console.error(err);
+        redirectToWebsite();
+        return;
+      }
+
+      // Generate a deep link URL for your app
+      var deepLinkURL = "thebeerstore://";
+
+      // Create a Branch deep link
+      var branchLinkData = {
+        channel: "website",
+        data: {
+          $og_title: "The Beer Store",
+          $deeplink_path: deepLinkURL,
+        },
+      };
+
+      script.link(branchLinkData, function (err, link) {
+        if (err) {
+          console.error(err);
+          redirectToWebsite();
+          return;
+        }
+
+        // Redirect the user to the generated deep link URL
+        window.location.href = link;
+      });
+    });
+
+    // Function to redirect to the website
+    function redirectToWebsite() {
       window.location.href = "https://www.thebeerstore.ca/";
     }
   }, []);
