@@ -6,11 +6,11 @@ function App() {
   useEffect(() => {
     var webURL;
     if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-      webURL = encodeURIComponent(
+      webURL = 
         "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone"
-      );
+      
     } else {
-      webURL = encodeURIComponent("market://details?id=com.beerstore");
+      webURL = "market://details?id=com.beerstore";
     }
     // window.open(webURL, "_blank");
     // window.location.href = webURL;
