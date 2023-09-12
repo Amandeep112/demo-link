@@ -20,17 +20,20 @@ function App() {
 
     var deepLinkURL = `thebeerstore://`;
     if (isMobile) {
-      document.getElementById("loader").src =
-        deepLinkURL + window.location.search + window.location.hash;
+      document.getElementById("loader").src = deepLinkURL;
       // window.location.href = deepLinkURL;
       setTimeout(function () {
         // If the app does not open, fall back to the browser
         window.open(
-          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone",
+          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
+            window.location.search +
+            window.location.hash,
           "_blank"
         );
         window.location.href =
-          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
+          "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
+          window.location.search +
+          window.location.hash;
       }, 1000);
     } else {
       // Open in the browser on non-mobile devices
@@ -41,7 +44,12 @@ function App() {
 
   return (
     <div className="App">
-      <iframe style="display:none" height="0" width="0" id="loader"></iframe>
+      <iframe
+        style={{ display: "none" }}
+        height="0"
+        width="0"
+        id="loader"
+      ></iframe>
     </div>
   );
 }
