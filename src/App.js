@@ -17,19 +17,30 @@ function App() {
       if (isiOS || isAndroid) {
         window.location.href = "thebeerstore://";
         document.getElementById("loader").src =
-          "thebeerstore://"+window.location.search+window.location.hash;
+          "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore"
           : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone";
       } else {
-        window.location.href = "https://www.thebeerstore.ca/";
+        window.location.href =
+          "https://www.thebeerstore.ca/" +
+          window.location.search +
+          window.location.hash;
       }
       window.setTimeout(function () {
         window.location.replace(fallbackLink);
       }, 1);
     } catch {
-      window.open("https://www.thebeerstore.ca/", "_blank");
-      window.location.href = "https://www.thebeerstore.ca/";
+      window.open(
+        "https://www.thebeerstore.ca/" +
+          window.location.search +
+          window.location.hash,
+        "_blank"
+      );
+      window.location.href =
+        "https://www.thebeerstore.ca/" +
+        window.location.search +
+        window.location.hash;
     }
   }, []);
 
