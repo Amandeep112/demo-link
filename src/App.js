@@ -5,7 +5,7 @@ import { useEffect } from "react";
 function App() {
   // eslint-disable-next-line no-undef
    useEffect(() => {
-    window.alert("hello");
+   
     var fallbackLink =
       "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
       window.location.search +
