@@ -13,20 +13,25 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
-    
+    var appleExpression = /Apple/i.test(navigator.userAgent);
+    var safariExpression = /Safari/i.test(navigator.userAgent);
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("safari") != -1) {
+      if (ua.indexOf("chrome") > -1) {
+        alert("1"); // Chrome
+      } else {
+        alert("2"); // Safari
+      }
+    }
     try {
       if (
         navigator.userAgent.indexOf("Safari") !== -1 &&
         navigator.userAgent.indexOf("Chrome") === -1
       ) {
-        window.open(
-          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html",
-          "_blank"
-        );
-        window.location.href =
-          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html";
+        window.open("thebeerstore://", "_blank");
+        window.location.href = "thebeerstore://";
         window.setTimeout(function () {
-          window.location.replace("https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html");
+          window.location.replace("thebeerstore://");
           window.alert("fallback detected");
         }, 1000);
         window.alert("enter IN safari");
