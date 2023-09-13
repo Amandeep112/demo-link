@@ -17,7 +17,9 @@ function App() {
         navigator.userAgent.indexOf("Chrome") === -1
       ) {
         window.open(
-          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html",
+          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html" +
+            window.location.search +
+            window.location.hash,
           "_blank"
         );
 
