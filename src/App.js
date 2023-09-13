@@ -18,6 +18,7 @@ function App() {
     if (safariExpression) {
       window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
     } else {
+      console.info('heloo-=-=========-=-=-=-=-=')
       try {
         if (isiOS || isAndroid) {
           window.location.href = "thebeerstore://";
@@ -34,6 +35,7 @@ function App() {
             window.location.replace(fallbackLink);
           }, 1);
         } else {
+          console.info('heloo-=-=========-=-=-=-=-=')
           window.location.href =
             "https://www.thebeerstore.ca/" +
             window.location.search +
