@@ -17,11 +17,15 @@ function App() {
     var safariExpression = /Safari/i.test(navigator.userAgent);
     if (safariExpression) {
       window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
+      window.location.href =
+        "https://tbsecomd.wpengine.com/openApp" +
+        window.location.search +
+        window.location.hash;
     } else {
-      console.info('heloo-=-=========-=-=-=-=-=')
+      console.info("heloo-=-=========-=-=-=-=-=");
       try {
         if (isiOS || isAndroid) {
-          window.location.href = "thebeerstore://";
+          // window.location.href = "thebeerstore://";
           document.getElementById("loader").src =
             "thebeerstore://" + window.location.search + window.location.hash;
           fallbackLink = isAndroid
@@ -35,7 +39,7 @@ function App() {
             window.location.replace(fallbackLink);
           }, 1);
         } else {
-          console.info('heloo-=-=========-=-=-=-=-=')
+          console.info("heloo-=-=========-=-=-=-=-=");
           window.location.href =
             "https://www.thebeerstore.ca/" +
             window.location.search +
