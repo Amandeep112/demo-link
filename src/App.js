@@ -1,3 +1,5 @@
+import logo from "./logo.svg";
+import "./App.css";
 import { useEffect } from "react";
 
 function App() {
@@ -11,6 +13,16 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
+    var appleExpression = /Apple/i.test(navigator.userAgent);
+    var safariExpression = /Safari/i.test(navigator.userAgent);
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("safari") != -1) {
+      if (ua.indexOf("chrome") > -1) {
+        alert("1"); // Chrome
+      } else {
+        alert("2"); // Safari
+      }
+    }
     try {
       if (
         navigator.userAgent.indexOf("Safari") !== -1 &&
@@ -22,7 +34,16 @@ function App() {
             window.location.hash,
           "_blank"
         );
-
+        window.location.href =
+          "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html" +
+          window.location.search +
+          window.location.hash;
+        window.setTimeout(function () {
+          window.location.replace(
+            "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html"
+          );
+          window.alert("fallback detected");
+        }, 1000);
         window.alert("enter IN safari");
       } else {
         if (isiOS || isAndroid) {
