@@ -22,13 +22,13 @@ function App() {
           : "thebeerstore://";
         // document.getElementById("loader").src =
         //   "thebeerstore://" + window.location.search + window.location.hash;
-        fallbackLink = isAndroid
-          ? "market://details?id=com.beerstore" +
-            window.location.search +
-            window.location.hash
-          : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
-            window.location.search +
-            window.location.hash;
+        // fallbackLink = isAndroid
+        //   ? "market://details?id=com.beerstore" +
+        //     window.location.search +
+        //     window.location.hash
+        //   : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
+        //     window.location.search +
+        //     window.location.hash;
         window.setTimeout(function () {
           window.location.replace(fallbackLink);
         }, 1);
