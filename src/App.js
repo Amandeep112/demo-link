@@ -1,6 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect } from "react";
+
 function App() {
   useEffect(() => {
     var fallbackLink =
@@ -12,16 +13,13 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
-    // var appleExpression = /Apple/i.test(navigator.userAgent);
+    var appleExpression = /Apple/i.test(navigator.userAgent);
     var safariExpression = /Safari/i.test(navigator.userAgent);
-    // if (safariExpression) {
-    //   window.open("https://tbsecomd.wpengine.com/openApp","_blank");
-    // }else{
-    // }
-
     try {
       if (isiOS || isAndroid) {
-        window.location.href = "https://tbsecomd.wpengine.com/openApp";
+        window.location.href = safariExpression
+          ? "https://tbsecomd.wpengine.com/openApp"
+          : "thebeerstore://";
         // document.getElementById("loader").src =
         //   "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
@@ -36,19 +34,19 @@ function App() {
         }, 1);
       } else {
         window.location.href =
-          "https://tbsecomd.wpengine.com/openApp" +
+          "https://www.thebeerstore.ca/" +
           window.location.search +
           window.location.hash;
       }
     } catch {
       window.open(
-        "https://tbsecomd.wpengine.com/openApp" +
+        "https://www.thebeerstore.ca/" +
           window.location.search +
           window.location.hash,
         "_blank"
       );
       window.location.href =
-        "https://tbsecomd.wpengine.com/openApp" +
+        "https://www.thebeerstore.ca/" +
         window.location.search +
         window.location.hash;
     }
@@ -56,12 +54,12 @@ function App() {
 
   return (
     <div className="App">
-      // <iframe
-      //   style={{ display: "none" }}
-      //   height="0"
-      //   width="0"
-      //   id="loader"
-      // ></iframe>
+      {/* <iframe
+        style={{ display: "none" }}
+        height="0"
+        width="0"
+        id="loader"
+      ></iframe> */}
     </div>
   );
 }
