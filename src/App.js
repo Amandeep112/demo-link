@@ -16,48 +16,43 @@ function App() {
     // var appleExpression = /Apple/i.test(navigator.userAgent);
     var safariExpression = /Safari/i.test(navigator.userAgent);
     // if (safariExpression) {
-      window.open("https://tbsecomd.wpengine.com/openApp", "_blank");
+    //   window.open("https://tbsecomd.wpengine.com/openApp","_blank");
+    // }else{
+    // }
+
+    try {
+      if (isiOS || isAndroid) {
+        window.location.href = "https://tbsecomd.wpengine.com/openApp";
+        document.getElementById("loader").src =
+          "thebeerstore://" + window.location.search + window.location.hash;
+        fallbackLink = isAndroid
+          ? "market://details?id=com.beerstore" +
+            window.location.search +
+            window.location.hash
+          : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
+            window.location.search +
+            window.location.hash;
+        window.setTimeout(function () {
+          window.location.replace(fallbackLink);
+        }, 1);
+      } else {
+        window.location.href =
+          "https://tbsecomd.wpengine.com/openApp" +
+          window.location.search +
+          window.location.hash;
+      }
+    } catch {
+      window.open(
+        "https://tbsecomd.wpengine.com/openApp" +
+          window.location.search +
+          window.location.hash,
+        "_blank"
+      );
       window.location.href =
         "https://tbsecomd.wpengine.com/openApp" +
         window.location.search +
         window.location.hash;
-    // } else {
-      console.info("heloo-=-=========-=-=-=-=-=");
-      // try {
-      //   if (isiOS || isAndroid) {
-      //     // window.location.href = "thebeerstore://";
-      //     document.getElementById("loader").src =
-      //       "thebeerstore://" + window.location.search + window.location.hash;
-      //     fallbackLink = isAndroid
-      //       ? "market://details?id=com.beerstore" +
-      //         window.location.search +
-      //         window.location.hash
-      //       : "https://itunes.apple.com/ca/app/the-beer-store/id1623374239?platform=iphone" +
-      //         window.location.search +
-      //         window.location.hash;
-      //     window.setTimeout(function () {
-      //       window.location.replace(fallbackLink);
-      //     }, 1);
-      //   } else {
-      //     console.info("heloo-=-=========-=-=-=-=-=");
-      //     window.location.href =
-      //       "https://www.thebeerstore.ca/" +
-      //       window.location.search +
-      //       window.location.hash;
-      //   }
-      // } catch {
-      //   window.open(
-      //     "https://www.thebeerstore.ca/" +
-      //       window.location.search +
-      //       window.location.hash,
-      //     "_blank"
-      //   );
-      //   window.location.href =
-      //     "https://www.thebeerstore.ca/" +
-      //     window.location.search +
-      //     window.location.hash;
-      // }
-    // }
+    }
   }, []);
 
   return (
