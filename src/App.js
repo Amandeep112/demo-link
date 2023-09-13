@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useEffect } from "react";
-
 function App() {
   useEffect(() => {
     var fallbackLink =
@@ -23,8 +22,8 @@ function App() {
     try {
       if (isiOS || isAndroid) {
         window.location.href = "https://tbsecomd.wpengine.com/openApp";
-        document.getElementById("loader").src =
-          "thebeerstore://" + window.location.search + window.location.hash;
+        // document.getElementById("loader").src =
+        //   "thebeerstore://" + window.location.search + window.location.hash;
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore" +
             window.location.search +
@@ -57,12 +56,12 @@ function App() {
 
   return (
     <div className="App">
-      <iframe
-        style={{ display: "none" }}
-        height="0"
-        width="0"
-        id="loader"
-      ></iframe>
+      // <iframe
+      //   style={{ display: "none" }}
+      //   height="0"
+      //   width="0"
+      //   id="loader"
+      // ></iframe>
     </div>
   );
 }
