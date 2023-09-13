@@ -72,7 +72,6 @@ function App() {
         window.location.hash;
     }
   }, []);
-
   return (
     <div className="App">
       <iframe id="loader" style={{ display: "none" }}></iframe>
