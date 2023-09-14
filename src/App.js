@@ -13,12 +13,18 @@ function App() {
         navigator.userAgent.match("iPhone") ||
         navigator.userAgent.match("iPod"),
       isAndroid = navigator.userAgent.match("Android");
-
+    var webURL;
+    var isSafari =
+      navigator.userAgent.indexOf("Safari") !== -1 &&
+      navigator.userAgent.indexOf("Chrome") === -1;
+    if (/iPhone|iPad|iPod/i.test(navigator.userAgent) && isSafari) {
+      webURL = "https://tbsecomd.wpengine.com/openApp";
+      alert("iphone");
+    } else {
+      webURL = "thebeerstore://";
+      alert("android");
+    }
     try {
-      var isSafari =
-        navigator.userAgent.indexOf("Safari") !== -1 &&
-        navigator.userAgent.indexOf("Chrome") === -1;
-
       // window.open(
       //   "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html",
       //   "_blank"
@@ -36,12 +42,10 @@ function App() {
       // window.alert("enter IN safari");
 
       if (isiOS || isAndroid) {
-        window.location.href = isSafari
-          ? "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html"
-          : "thebeerstore://";
-        document.getElementById("loader").src = isSafari
-          ? "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html"
-          : "thebeerstore://";
+        alert(webURL);
+        window.location.href = webURL;
+        window.location.href = document.getElementById("loader").src =
+          webURL + window.location.search + window.location.hash;
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore" +
             window.location.search +
@@ -51,7 +55,7 @@ function App() {
             window.location.hash;
         window.alert("mobile detected");
         window.setTimeout(function () {
-          window.open(fallbackLink, "_blank");
+          window.open(fallbackLink);
           window.location.replace(fallbackLink);
           window.alert("fallback detected");
         }, 1000);
