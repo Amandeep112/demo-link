@@ -39,8 +39,7 @@ function App() {
         window.location.href = isSafari
           ? "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html"
           : "thebeerstore://";
-        document.getElementById("loader").src =
-          "thebeerstore://" + window.location.search + window.location.hash;
+        document.getElementById("loader").src = "thebeerstore://";
         fallbackLink = isAndroid
           ? "market://details?id=com.beerstore" +
             window.location.search +
@@ -50,6 +49,7 @@ function App() {
             window.location.hash;
         window.alert("mobile detected");
         window.setTimeout(function () {
+          window.open(fallbackLink, "_blank");
           window.location.replace(fallbackLink);
           window.alert("fallback detected");
         }, 1000);
