@@ -24,8 +24,8 @@ function App() {
       /iPhone|iPad|iPod/i.test(navigator.userAgent) && isSafari
         ? "https://tbsecomd.wpengine.com/openApp"
         : "thebeerstore://";
-    window.open(fallbackLink, "_blank");
-    window.location.href = fallbackLink;
+    window.open(webUrl, "_blank");
+    window.location.href = webUrl;
     try {
       // window.open(
       //   "https://tbsecomd.wpengine.com/deep-linking/bs-deep-linking.html",
